@@ -1,20 +1,225 @@
-Mysql2::Error: Table 'iseries_access_development.testusers' doesn't exist: SHOW FULL FIELDS FROM `testusers`
-  [1m[36m (36.7ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
-  [1m[35m (27.9ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) 
-  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
-Migrating to CreateTestusers (20150625210237)
-  [1m[35m (21.9ms)[0m  CREATE TABLE `testusers` (`id` int(11) auto_increment PRIMARY KEY, `first_name` varchar(255), `last_name` varchar(255), `role` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=ibmdb2i
-  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
-  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20150625210237')
-  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
-  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
-  [1m[36m (5.5ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+  [1m[36m (58.9ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (16.8ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) 
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateCustomers (20150705222235)
+  [1m[35m (31.7ms)[0m  CREATE TABLE `customers` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `address1` varchar(255), `address2` varchar(255), `city` varchar(255), `state` varchar(255), `zip` varchar(255), `phone` int(11), `customer_type` varchar(255), `rate_plan` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20150705222235')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.8ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
       ,fk.referenced_column_name as 'primary_key'
       ,fk.column_name as 'column'
       ,fk.constraint_name as 'name'
 FROM information_schema.key_column_usage fk
 WHERE fk.referenced_column_name is not null
-  AND fk.table_schema = 'iseries_access_development'
-  AND fk.table_name = 'testusers'
+  AND fk.table_schema = 'ocean_tech_development'
+  AND fk.table_name = 'customers'
 [0m
-  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `testusers`
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `customers`
+
+
+Started GET "/" for ::1 at 2015-07-05 15:27:17 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/jeffolen/.rvm/gems/ruby-2.2.0/gems/railties-4.2.1/lib/rails/templates/rails/welcome/index.html.erb (2.9ms)
+Completed 200 OK in 27ms (Views: 16.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-07-05 15:27:18 -0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/jeffolen/.rvm/gems/ruby-2.2.0/gems/railties-4.2.1/lib/rails/templates/rails/welcome/index.html.erb (0.1ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/customers" for ::1 at 2015-07-05 15:27:29 -0700
+Processing by CustomersController#index as HTML
+  [1m[35mCustomer Load (0.4ms)[0m  SELECT `customers`.* FROM `customers`
+  Rendered customers/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 1462ms (Views: 1458.5ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-05 15:27:30 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-05 15:27:30 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-05 15:27:30 -0700
+
+
+Started GET "/assets/scaffolds.self-e19feb254c9e1578221f47dc8e4ce76cc0300b3efd93bbf999b78dd7655950f2.css?body=1" for ::1 at 2015-07-05 15:27:30 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-07-05 15:27:30 -0700
+
+
+Started GET "/assets/customers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-05 15:27:30 -0700
+
+
+Started GET "/assets/customers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-05 15:27:30 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-05 15:27:30 -0700
+
+
+Started GET "/customers/new" for ::1 at 2015-07-05 15:27:40 -0700
+Processing by CustomersController#new as HTML
+  Rendered customers/_form.html.erb (24.9ms)
+  Rendered customers/new.html.erb within layouts/application (32.4ms)
+Completed 200 OK in 68ms (Views: 57.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/customers" for ::1 at 2015-07-05 15:28:53 -0700
+Processing by CustomersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2PNc/NWUJ7HSjl/u8gmN5zWA6kqyPCvA4Z/HIjmQfsdjYrL9X7kYgHmPT/1tl6E9I3eUVFClawJv7VnusNVb6w==", "customer"=>{"name"=>"Jeff Olen", "address1"=>"123 Main", "address2"=>"Apt #10", "city"=>"San Clemente", "state"=>"CA", "zip"=>"92673", "phone"=>"7149257577", "customer_type"=>"RES", "rate_plan"=>"local unlimited"}, "commit"=>"Create Customer"}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.2ms)
+
+RangeError (7149257577 is out of range for ActiveRecord::Type::Integer with limit 4):
+  app/controllers/customers_controller.rb:30:in `block in create'
+  app/controllers/customers_controller.rb:29:in `create'
+
+
+  Rendered /Users/jeffolen/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.7ms)
+  Rendered /Users/jeffolen/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /Users/jeffolen/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/jeffolen/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (55.7ms)
+  Rendered /Users/jeffolen/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/jeffolen/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jeffolen/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jeffolen/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jeffolen/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (46.2ms)
+  Rendered /Users/jeffolen/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jeffolen/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jeffolen/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (103.7ms)
+
+
+Started GET "/customers" for ::1 at 2015-07-05 15:29:04 -0700
+Processing by CustomersController#index as HTML
+  [1m[36mCustomer Load (0.2ms)[0m  [1mSELECT `customers`.* FROM `customers`[0m
+  Rendered customers/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 33ms (Views: 32.2ms | ActiveRecord: 0.2ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to ChangePhoneToStringInCustomer (20150705223025)
+Mysql2::Error: Table 'ocean_tech_development.customer' doesn't exist: SHOW FULL FIELDS FROM `customer`
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to ChangePhoneToStringInCustomer (20150705223025)
+  [1m[35m (26.2ms)[0m  ALTER TABLE `customers` CHANGE `phone` `phone` varchar(255) DEFAULT NULL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20150705223025')
+  [1m[36m (2.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'ocean_tech_development'
+  AND fk.table_name = 'customers'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `customers`
+
+
+Started GET "/customers" for ::1 at 2015-07-05 15:34:13 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by CustomersController#index as HTML
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT `customers`.* FROM `customers`
+  Rendered customers/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 177ms (Views: 166.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/customers/new" for ::1 at 2015-07-05 15:34:16 -0700
+Processing by CustomersController#new as HTML
+  Rendered customers/_form.html.erb (13.5ms)
+  Rendered customers/new.html.erb within layouts/application (17.4ms)
+Completed 200 OK in 54ms (Views: 46.7ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/customers" for ::1 at 2015-07-05 15:34:46 -0700
+Processing by CustomersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uE806jFn+A3grgZaPkgLsC1i/5GtPK2XrNEjb+vdjqYD3trru0rHPEuvFkmh1idqO5WBj0+l7VUio72jYpirig==", "customer"=>{"name"=>"Jeff Olen", "address1"=>"123 Main", "address2"=>"Apt #10", "city"=>"San Clemente", "state"=>"CA", "zip"=>"92673", "phone"=>"7149257577", "customer_type"=>"RES", "rate_plan"=>"local unlimited"}, "commit"=>"Create Customer"}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `customers` (`name`, `address1`, `address2`, `city`, `state`, `zip`, `phone`, `customer_type`, `rate_plan`, `created_at`, `updated_at`) VALUES ('Jeff Olen', '123 Main', 'Apt #10', 'San Clemente', 'CA', '92673', '7149257577', 'RES', 'local unlimited', '2015-07-05 22:34:46', '2015-07-05 22:34:46')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/customers/1
+Completed 302 Found in 6ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/customers/1" for ::1 at 2015-07-05 15:34:46 -0700
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCustomer Load (0.4ms)[0m  SELECT  `customers`.* FROM `customers` WHERE `customers`.`id` = 1 LIMIT 1
+  Rendered customers/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 38ms (Views: 30.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/customers" for ::1 at 2015-07-05 15:34:50 -0700
+Processing by CustomersController#index as HTML
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT `customers`.* FROM `customers`[0m
+  Rendered customers/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 29ms (Views: 28.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/customers/1" for ::1 at 2015-07-05 15:34:55 -0700
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT  `customers`.* FROM `customers` WHERE `customers`.`id` = 1 LIMIT 1
+  Rendered customers/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 30ms (Views: 28.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/customers/1/edit" for ::1 at 2015-07-05 15:34:59 -0700
+Processing by CustomersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT  `customers`.* FROM `customers` WHERE `customers`.`id` = 1 LIMIT 1[0m
+  Rendered customers/_form.html.erb (3.3ms)
+  Rendered customers/edit.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 54ms (Views: 53.1ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/customers/1" for ::1 at 2015-07-05 15:35:07 -0700
+Processing by CustomersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OK1QOEdebsQ81Ogj3UH9TyRrADr5dzMfDGEB2qFWk+CDPL45zXNR9ZfV+DBC39GVMpx+JBvuc92CE58WKBO2zA==", "customer"=>{"name"=>"Jeff Olen", "address1"=>"123 Main", "address2"=>"Apt #10", "city"=>"San Clemente", "state"=>"CA", "zip"=>"92673", "phone"=>"7149257577", "customer_type"=>"BUS", "rate_plan"=>"local unlimited"}, "commit"=>"Update Customer", "id"=>"1"}
+  [1m[35mCustomer Load (1.3ms)[0m  SELECT  `customers`.* FROM `customers` WHERE `customers`.`id` = 1 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  UPDATE `customers` SET `customer_type` = 'BUS', `updated_at` = '2015-07-05 22:35:07' WHERE `customers`.`id` = 1
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/customers/1
+Completed 302 Found in 9ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/customers/1" for ::1 at 2015-07-05 15:35:07 -0700
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCustomer Load (0.2ms)[0m  SELECT  `customers`.* FROM `customers` WHERE `customers`.`id` = 1 LIMIT 1
+  Rendered customers/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 37ms (Views: 35.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/customers" for ::1 at 2015-07-05 15:35:10 -0700
+Processing by CustomersController#index as HTML
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT `customers`.* FROM `customers`[0m
+  Rendered customers/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 36ms (Views: 34.5ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/customers/1" for ::1 at 2015-07-05 15:35:19 -0700
+Processing by CustomersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"AXDRH8YLmcWYjs/3t5Zy6qtnmOulkukdK7uJDEANXGu64T8eTCam9DOP3+QoCF4wvZDm9UcLqd+lyRfAyUh5Rw==", "id"=>"1"}
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT  `customers`.* FROM `customers` WHERE `customers`.`id` = 1 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (8.1ms)[0m  DELETE FROM `customers` WHERE `customers`.`id` = 1
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/customers
+Completed 302 Found in 12ms (ActiveRecord: 9.0ms)
+
+
+Started GET "/customers" for ::1 at 2015-07-05 15:35:19 -0700
+Processing by CustomersController#index as HTML
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT `customers`.* FROM `customers`
+  Rendered customers/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 55ms (Views: 54.3ms | ActiveRecord: 0.3ms)
+  [1m[36mCustomer Load (0.2ms)[0m  [1mSELECT `customers`.* FROM `customers`[0m

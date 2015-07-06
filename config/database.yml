@@ -18,25 +18,14 @@ default: &default
 
 development:
   <<: *default
-  database: iseries_access_development
+  database: ocean_tech_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: iseries_access_test
-#
-staging:
-  <<: *default
-  database: jeffo_sql
-  username: railsuser
-  password: railsuser
-  host: iseries.dynalias.net
-  engine: ibmdb2i
-
-
-
+  database: ocean_tech_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -57,8 +46,16 @@ staging:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+staging:
+  <<: *default
+  database: oceantech
+  username: railsuser
+  password: railsuser
+  host: iseries.dynalias.net
+  engine: ibmdb2i
+
 production:
   <<: *default
-  database: iseries_access_production
-  username: iseries_access
-  password: <%= ENV['ISERIES_ACCESS_DATABASE_PASSWORD'] %>
+  database: ocean_tech_production
+  username: ocean_tech
+  password: <%= ENV['OCEAN_TECH_DATABASE_PASSWORD'] %>
