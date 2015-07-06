@@ -241,3 +241,37 @@ Processing by CustomersController#index as HTML
   [1m[35mCustomer Load (20.2ms)[0m  SELECT `customers`.* FROM `customers`
   Rendered customers/index.html.erb within layouts/application (22.8ms)
 Completed 200 OK in 33ms (Views: 12.4ms | ActiveRecord: 20.2ms)
+Started GET "/customers" for ::1 at 2015-07-05 18:39:20 -0700
+Processing by CustomersController#index as HTML
+  [1m[36mCustomer Load (614.0ms)[0m  [1mSELECT `customers`.* FROM `customers`[0m
+  Rendered customers/index.html.erb within layouts/application (1715.1ms)
+Completed 500 Internal Server Error in 1895ms (ActiveRecord: 1681.3ms)
+
+ActionView::Template::Error (File to import not found or unreadable: bootstrap-sprockets.):
+    2: <html>
+    3: <head>
+    4:   <title><%= yield(:title) %></title>
+    5:   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    6:   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___2817092044512740650_70343088279960'
+
+
+Started GET "/customers" for ::1 at 2015-07-05 18:39:37 -0700
+Processing by CustomersController#index as HTML
+  [1m[35mCustomer Load (24.1ms)[0m  SELECT `customers`.* FROM `customers`
+  Rendered customers/index.html.erb within layouts/application (25.5ms)
+Completed 500 Internal Server Error in 46ms (ActiveRecord: 24.1ms)
+
+ActionView::Template::Error (File to import not found or unreadable: bootstrap-sprockets.):
+    2: <html>
+    3: <head>
+    4:   <title><%= yield(:title) %></title>
+    5:   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    6:   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___2817092044512740650_70343088279960'
+
+
